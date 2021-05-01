@@ -8,7 +8,7 @@ from core.util import basic_io
 
 SIZE = 100
 SECONDS_PER_WEEK = 604800
-number_of_weeks = 6
+number_of_weeks = 52
 WEEKS_IN_SECONDS = 604800 * number_of_weeks
 
 
