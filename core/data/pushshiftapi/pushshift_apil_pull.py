@@ -8,7 +8,7 @@ from core.util import basic_io
 
 SIZE = 100
 SECONDS_PER_WEEK = 604800
-number_of_weeks = 2
+number_of_weeks = 6
 WEEKS_IN_SECONDS = 604800 * number_of_weeks
 
 
@@ -44,9 +44,9 @@ def get_subreddit(subreddit, quarantine_date_str):
     next_6_weeks = quarantine_date + WEEKS_IN_SECONDS
     prev_6_weeks = quarantine_date - WEEKS_IN_SECONDS
     get_farthest = next_6_weeks
-    output_length = 100
+    output_length = SIZE
 
-    while output_length == 100 and get_farthest >= prev_6_weeks:
+    while output_length == SIZE and get_farthest >= prev_6_weeks:
         posts = get_posts(subreddit, get_farthest)
         output_length = len(posts)
         all_posts.extend(posts)
