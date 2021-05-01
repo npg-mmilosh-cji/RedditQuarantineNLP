@@ -2,7 +2,7 @@
 *_TheRedPill.json
 
 # all jsons in raw folder
-raw/*.json
+/core/data/raw/*.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
