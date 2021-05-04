@@ -2,14 +2,22 @@ import os
 import requests
 import time
 import random
+import pandas as pd
 from datetime import datetime
 from core.data.raw.subreddit_info import subreddit_info
 from core.util import basic_io
+from pushshift_py import PushshiftAPI
 
 SIZE = 100
 SECONDS_PER_WEEK = 604800
 number_of_weeks = 52
 WEEKS_IN_SECONDS = 604800 * number_of_weeks
+
+# time period for pushshift api
+TIME_PERIOD = 60
+API_LIMIT = 200
+
+api = PushshiftAPI()
 
 
 def get_posts(subreddit, before):
@@ -39,53 +47,41 @@ def get_subreddit(subreddit, quarantine_date_str):
         subreddit: (str) name of subreddit
         quarantine_date: (str) date of quarantine as string
     '''
-    all_posts = []
     quarantine_date = int(datetime.strptime(quarantine_date_str, '%Y-%m-%d').timestamp())
-    next_6_weeks = quarantine_date + WEEKS_IN_SECONDS
-    prev_6_weeks = quarantine_date - WEEKS_IN_SECONDS
-    get_farthest = next_6_weeks
-    output_length = SIZE
+    print(f"q date {datetime.fromtimestamp(quarantine_date)}")
 
-    while output_length == SIZE and get_farthest >= prev_6_weeks:
-        posts = get_posts(subreddit, get_farthest)
-        output_length = len(posts)
-        all_posts.extend(posts)
+    end_date = quarantine_date + WEEKS_IN_SECONDS
+    print(f"end date {datetime.fromtimestamp(end_date)}")
 
-        for post in posts:
-            post_date = post['created_utc']
+    begin_date = quarantine_date - WEEKS_IN_SECONDS
+    print(f"begin date {datetime.fromtimestamp(begin_date)}")
 
-        if get_farthest != post_date:
-            get_farthest = post_date
-        else:
-            get_farthest -= 1
+    print(f"begin date: {datetime.fromtimestamp(begin_date)}, end date: {datetime.fromtimestamp(end_date)}")
 
-        time.sleep(1 + random.randint(0, 1))
+    submission_list = list(api.search_submissions(
+        # after=begin_date,
+        # before=end_date,
+        after=quarantine_date,
+        subreddit=subreddit))
 
-    print(len(all_posts))
-    return all_posts
+    print(len(submission_list))
+
+    dict_list = [x._asdict() for x in submission_list]
+    print(len(dict_list))
+    submission_df = pd.DataFrame(dict_list, columns=dict_list[0].keys())
+
+    return submission_df
 
 
-def go(mode='scrape'):
+def go():
     '''
     Runs the code.
-    Input:
-        mode: if not specified or 'scrape', it will use subreddits
-        from subreddits.txt
-        if specified to anithing other than 'scrape', asks for
-        a subreddit to test on.
     Output:
-        None, writes an .sql file.
+        None, writes csv
     '''
-    if mode == 'scrape':
-        for subreddit, quarantine_date in subreddit_info.items():
-            subreddit_posts = get_subreddit(subreddit, quarantine_date)
-            file_name = f"{subreddit}_weeks_{number_of_weeks}.json"
-            file_path = os.path.join(os.getcwd(), "core", "data", "raw", file_name)
-            basic_io.write_dict_to_json(file_path, subreddit_posts)
-    else:
-        subreddit = 'uchicago'
-        quarantine_date = '2021-01-15'
-        subreddit_posts = get_subreddit(subreddit, quarantine_date)
-        file_name = f"{subreddit}_weeks_{number_of_weeks}.json"
+    for subreddit, quarantine_date in subreddit_info.items():
+        subreddit_posts_df = get_subreddit(subreddit, quarantine_date)
+        file_name = f"{subreddit}_weeks_{number_of_weeks}.csv"
         file_path = os.path.join(os.getcwd(), "core", "data", "raw", file_name)
-        basic_io.write_dict_to_json(file_path, subreddit_posts)
+        subreddit_posts_df.to_csv(file_path)
+
