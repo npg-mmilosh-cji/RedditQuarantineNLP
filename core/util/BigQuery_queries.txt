@@ -1,0 +1,15 @@
+SELECT * FROM `fh-bigquery.reddit_comments.2019_06` WHERE subreddit ='The_Donald'
+
+SELECT * FROM `fh-bigquery.reddit_comments.2019_07` WHERE subreddit ='The_Donald'
+SELECT * FROM `fh-bigquery.reddit_comments.2019_08` WHERE subreddit ='The_Donald'
+SELECT * FROM `fh-bigquery.reddit_comments.2019_09` WHERE subreddit ='The_Donald'
+SELECT * FROM `fh-bigquery.reddit_comments.2019_10` WHERE subreddit ='The_Donald'
+SELECT * FROM `fh-bigquery.reddit_comments.2019_11` WHERE subreddit ='The_Donald'
+SELECT * FROM `fh-bigquery.reddit_comments.2019_12` WHERE subreddit ='The_Donald'
+
+
+SELECT * FROM `fh-bigquery.reddit_comments.2019_01` WHERE subreddit ='The_Donald'
+SELECT * FROM `fh-bigquery.reddit_comments.2019_02` WHERE subreddit ='The_Donald'
+SELECT * FROM `fh-bigquery.reddit_comments.2019_03` WHERE subreddit ='The_Donald'
+SELECT * FROM `fh-bigquery.reddit_comments.2019_04` WHERE subreddit ='The_Donald'
+SELECT * FROM `fh-bigquery.reddit_comments.2019_05` WHERE subreddit ='The_Donald'

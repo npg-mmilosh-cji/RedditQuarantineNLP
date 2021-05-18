@@ -1,0 +1,154 @@
+Joe=>Democrats
+Biden=>Democrats
+Joe Biden=>Democrats
+
+AOC=>Democrats
+Ocasio-Cortez=>Democrats
+Alexandria Ocasio-Cortez=>Democrats
+
+Ilhan Omar=>Democrats
+Ilhan=>Democrats
+Omar=>Democrats
+
+Nancy=>Democrats
+Nancy Pelosi=>Democrats
+Pelosi=>Democrats
+
+Obama=>Democrats
+Barack=>Democrats
+Barack Obama=>Democrats
+
+Hillary=>Democrats
+Hilary=>Democrats
+Rodham=>Democrats
+Clinton=>Democrats
+Hillary Clinton=>Democrats
+Hilary Clinton=>Democrats
+Hillary Rodham Clinton=>Democrats
+Hilary Rodham Clinton=>Democrats
+
+Kamala=>Democrats
+Harris=>Democrats
+Kamala Harris=>Democrats
+
+Bernie=>Democrats
+Bernie Sanders=>Democrats
+Sanders=>Democrats
+
+Liz=>Democrats
+Elizabeth=>Democrats
+Elizabeth Warren=>Democrats
+Liz Warren=>Democrats
+Warren=>Democrats
+
+RBG=>Democrats
+Ruth Bader Ginsberg=>Democrats
+Ruth=>Democrats
+
+Beto=>Democrats
+Beto O'Rourke=>Democrats
+O'Rourke=>Democrats
+
+POTUS=>Republicans
+President Trump=>Republicans
+President=>Republicans
+Trump=>Republicans
+Donald=>Republicans
+Donald Trump=>Republicans
+Eric Triump=>Republicans
+Ivanka Trump=>Republicans
+Jared Kushner=>Republicans
+Kushner=>Republicans
+
+Sean Spicer=>Republicans
+Spicer=>Republicans
+
+Ted Cruz=>Republicans
+Cruz=>Republicans
+
+Hawley=>Republicans
+Josh Hawley=>Republicans
+
+Bill Barr=>Republicans
+Barr=>Republicans
+
+James Comey=>Republicans
+Comey=>Republicans
+
+Mnuchin=>Republicans
+Steven Munuchin=>Republicans
+
+
+
+The left=>Left
+Dems=>Left
+Democrats=>Left
+Lefties=>Left
+Libs=>Left
+Liberals=>Left
+Liberalism=>Left
+Libtards=>Left
+Socialists=>Left
+Commies=>Left
+Communists=>Left
+Commiecrats=>Left
+Communism=>Left
+Socialism=>Left
+
+
+
+The right=>Right
+Conservatives=>Right
+Conservative=>Right
+MAGATS=>Right
+Magites=>Right
+Trumpers=>Right
+Trumpsters=>Right
+Trump Country=>Right
+MAGA=>Right
+KAG=>Right
+KAGA=>Right
+
+
+
+Reddit=>Tech
+Parler=>Tech
+Apple=>Tech
+Amazon=>Tech
+AWS=>Tech
+Facebook=>Tech
+Twitter=>Tech
+Youtube=>Tech
+Big Tech=>Tech
+Silicon Valley=>Tech
+
+
+
+Censorship=>Censorship
+Censored=>Censorship
+Censor=>Censorship
+Cancelled=>Censorship
+Cancel Culture=>Censorship
+Banned=>Censorship
+Ban=>Censorship
+Quarantine=>Censorship
+Free speech=>Censorship
+
+
+
+CNN=>News
+MSNBC=>News
+MSDNC=>News
+Fox=>News
+OAN=>News
+Newsmax=>News
+
+
+
+Constitution=>Ideals
+2A=>Ideals
+Democracy=>Ideals
+Liberty=>Ideals
+
+
+
