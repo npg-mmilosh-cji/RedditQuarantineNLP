@@ -35,6 +35,7 @@ def get_posts(subreddit, before):
     try:
         print('scraping before:', datetime.fromtimestamp(before))
         response = session.get(url=url)
+        print(response)
         return response.json()['data']
     except error.HTTPError:
         print(url)
@@ -93,6 +94,7 @@ def go():
         None, writes an .sql file.
     '''
     for subreddit, quarantine_date in subreddit_info.items():
+        print(f" ---------- pulling data for {subreddit} --------------------------------")
         subreddit_posts = get_subreddit(subreddit, quarantine_date)
         file_name = f"{subreddit}_weeks_{number_of_weeks}.json"
         file_path = os.path.join(os.getcwd(), "core", "data", "raw", file_name)

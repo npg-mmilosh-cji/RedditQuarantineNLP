@@ -1,13 +1,13 @@
 
 subreddit_info = {
-"TheRedPill": "2018-09-28",
+# "TheRedPill": "2018-09-28",
 # "The_Donald": "2019-06-26",
 # "FULLCOMMUNISM": "2018-09-28",
 # "watchpeopledie": "2018-09-28",
 # "asktrp": "2018-09-28",
-# "MGTOW": "2018-09-28",
-# "seduction": "2018-09-28",
-# "MensRights": "2018-09-28",
+"MGTOW": "2018-09-28",
+"seduction": "2018-09-28",
+"MensRights": "2018-09-28",
 # "PurplePillDebate": "2018-09-28",
 # "Conservative": "2019-06-26",
 # "AskTrumpSupporters": "2019-06-26",
