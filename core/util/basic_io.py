@@ -42,3 +42,14 @@ def read_csv_to_list(file_path):
     with open(file_path, 'r', encoding='utf-8-sig') as f:
         reader = csv.reader(f)
         return list(reader)
+
+
+def write_list_to_csv(lines, file_name):
+    """
+    write list to csv
+    :param lines: list of data to write to csv
+    :param file_name: output file name
+    """
+    with open(file_name, 'w') as writeFile:
+        writer = csv.writer(writeFile)
+        writer.writerows(lines)
