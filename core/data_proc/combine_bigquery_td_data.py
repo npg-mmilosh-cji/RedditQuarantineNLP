@@ -7,6 +7,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 from core.util.basic_io import *
+from core.data import dbclient
 
 headers = set()
 data = []
@@ -66,3 +67,9 @@ df['post_type'] = np.select(
 print(df.groupby('post_type')['post_type'].count())
 proc_output_filename = os.path.join("core", "data", "raw", "combined_bigquery_processed.csv")
 df.to_csv(proc_output_filename, index=False)
+
+# if os.path.exists(dbclient.DB_PATH):
+#     print("Deleting existing db and recreating it\n")
+#     os.remove(dbclient.DB_PATH)
+# db = dbclient.DBClient()
+# db.create_table_from_pandas(df, "THE_DONALD")
