@@ -2,8 +2,10 @@
 *_TheRedPill.json
 BigQuery.zip
 
+
 # all jsons in raw folder
 /core/data/raw/*.json
+core/data/raw/BigQuery/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
