@@ -65,8 +65,14 @@ df['post_type'] = np.select(
 )
 
 print(df.groupby('post_type')['post_type'].count())
-proc_output_filename = os.path.join("core", "data", "raw", "combined_bigquery_processed.csv")
+
+file_name = "combined_bigquery_processed"
+csv_file_name = file_name + ".csv"
+pkl_file_name = file_name + ".pkl"
+
+proc_output_filename = os.path.join("core", "data", "raw", csv_file_name)
 df.to_csv(proc_output_filename, index=False)
+df.to_pickle(pkl_file_name)
 
 # if os.path.exists(dbclient.DB_PATH):
 #     print("Deleting existing db and recreating it\n")
