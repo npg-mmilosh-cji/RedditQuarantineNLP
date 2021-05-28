@@ -1,44 +1,27 @@
+
+import pandas as pd
 import gensim
 import gensim.corpora as corpora
-import numpy as np
-import utils
-import os
-import pandas as pd
-from pprint import pprint
+
+def save_models(named_models):
+    for num_topics, model in named_models.items():
+        # set your path to models:
+        model_path = 'lda_models/lda_' + num_topics + '_topics'
+        model.save(model_path, separately = False)
 
 
-# data_path = '/home/mmilosh/RedditQuarantineNLP/BigQuery/'
+posts_df = pd.read_pickle('sampled_processed_extant_posts_june_july.pkl')
 
-# for file_ in os.listdir(data_path):
-#     print(file_)
-# df = pd.read_csv(data_path + file_, low_memory = False)
-df = pd.read_csv('/home/mmilosh/RedditQuarantineNLP/combined_bigquery_processed.csv',
- low_memory = False, usecols = ["selftext"])
+id2word = corpora.Dictionary(posts_df['tokens_lemma'])
+print('Making corpus...')
+corpus = [id2word.doc2bow(text) for text in posts_df['tokens_lemma']]
 
-df['selftext'] = df['selftext'].str.lower()
-df['selftext'] = df['selftext'].apply(utils.remove_non_words)
-print('removed non words')
-df['tokenized_text'] = df['selftext'].apply(utils.word_tokenize)
-print('tokenized text')
-df['normalized_text'] = df['tokenized_text'].apply(utils.normalize_tokens)
-print('normalized text')
-df = df[['normalized_text']]
-# df[['selftext', 'tokenized_text', 'normalized_text']].head()
+trained_models = dict()
+for num_topics in range(5, 30, 2):
+    print("Training LDA(k=%d)" % num_topics)
+    lda = gensim.models.LdaMulticore(corpus = corpus, id2word = id2word,
+                                     num_topics = num_topics, workers = 3,
+                                     passes=10, iterations=100, random_state=0, eval_every=None)
+    trained_models[num_topics] = lda
 
-# Create corpus
-id2word = corpora.Dictionary(df['normalized_text'])
-corpus = [id2word.doc2bow(text) for text in df['normalized_text']]
-
-# Build LDA model 
-print('building lda')
-num_topics = 10
-lda_model = gensim.models.LdaMulticore(corpus = corpus,
-                                    id2word = id2word,
-                                    num_topics = num_topics,
-                                    workers = 30)
-pprint(lda_model.print_topics())
-doc_lda = lda_model[corpus]
-
-# modname = str('lda_model_' + file_)
-modname = str('lda_model')
-lda_model.save(modname)
+save_models(trained_models)
