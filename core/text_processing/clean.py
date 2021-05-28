@@ -2,6 +2,7 @@ import string
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
 
 nltk.download('wordnet')
 nltk.download('punkt')
@@ -10,6 +11,14 @@ nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 stop_words.update([word.translate(str.maketrans('', '', string.punctuation))
                    for word in stop_words])
+stop_words.add("like")
+stop_words.add("would")
+stop_words.add("see")
+stop_words.add("get")
+stop_words.add("im")
+stop_words.add("thats")
+stop_words.add("may")
+stop_words.add("got")
 
 printable = set(string.printable)
 wnl = WordNetLemmatizer()
@@ -24,3 +33,38 @@ def remove_multiple_spaces(doc):
     except:
         print(doc)
         return ""
+
+
+def process_text(doc):
+    text_clean_space = remove_multiple_spaces(doc)
+    text_clean_space = ''.join(
+        filter(lambda x: x in printable, text_clean_space))
+    strip_punc_lower = text_clean_space.translate(
+        str.maketrans('', '', string.punctuation)).lower()
+    len_clean_str = len(strip_punc_lower)
+    tokens = []
+    clean_tokens = []
+    lemmatized_tokens = []
+    bigrams = []
+    trigrams = []
+    try:
+        for token in word_tokenize(strip_punc_lower):
+            tokens.append(token)
+            if token not in stop_words and 1 < len(token) < 21:
+                clean_tokens.append(token)
+                lemmatized_tokens.append(wnl.lemmatize(token))
+
+        bigrams = list(nltk.bigrams(lemmatized_tokens))
+        trigrams = list(nltk.trigrams(lemmatized_tokens))
+
+    except Exception as e:
+        print(e)
+
+    return (text_clean_space,
+            strip_punc_lower,
+            len_clean_str,
+            tokens,
+            clean_tokens,
+            lemmatized_tokens,
+            bigrams,
+            trigrams)
