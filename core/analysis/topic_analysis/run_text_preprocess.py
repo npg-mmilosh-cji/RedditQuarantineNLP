@@ -32,7 +32,9 @@ processed_text_columns = extant_posts.apply(
     lambda row: clean.process_text(row['selftext']), axis='columns', result_type='expand')
 
 # add column names
-processed_text_columns.columns = ['text_clean_space',
+processed_text_columns.columns = ['orig_selftext',
+                                  'has_long_token',
+                                  'text_clean_space',
                                   'text_clean_punc_lower',
                                   'len_clean',
                                   'tokens',
