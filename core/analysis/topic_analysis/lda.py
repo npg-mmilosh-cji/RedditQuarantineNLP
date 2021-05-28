@@ -1,20 +1,17 @@
 import gensim
-# from gensim.utils import simple_preprocess
-# from gensim.parsing.preprocessing import STOPWORDS
 import gensim.corpora as corpora
-# from nltk.stem import WordNetLemmatizer, SnowballStemmer
-# from nltk.stem.porter import *
 import numpy as np
 import utils
 import os
 import pandas as pd
 from pprint import pprint
 
+# ADD YOURS!
+data_path = '/Users/mmilosh/Dropbox/studies/ml/RedditQuarantineNLP/BigQuery/'
 
-# np.random.seed(2018)
-for file_ in os.listdir():
+for file_ in os.listdir(data_path):
     print(file_)
-    df = pd.read_csv('BigQuery/TD_Apr19.csv', low_memory=False)
+    df = pd.read_csv(data_path + file_, low_memory = False)
 
     df['body'] = df['body'].str.lower()
     df['body'] = df['body'].apply(utils.remove_non_words)
