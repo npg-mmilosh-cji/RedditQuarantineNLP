@@ -42,6 +42,7 @@ def process_text(doc):
     strip_punc_lower = text_clean_space.translate(
         str.maketrans('', '', string.punctuation)).lower()
     len_clean_str = len(strip_punc_lower)
+    has_long_token = False
     tokens = []
     clean_tokens = []
     lemmatized_tokens = []
@@ -53,6 +54,8 @@ def process_text(doc):
             if token not in stop_words and 1 < len(token) < 21:
                 clean_tokens.append(token)
                 lemmatized_tokens.append(wnl.lemmatize(token))
+            elif len(token) >= 21:
+                has_long_token = True
 
         bigrams = list(nltk.bigrams(lemmatized_tokens))
         trigrams = list(nltk.trigrams(lemmatized_tokens))
@@ -60,7 +63,9 @@ def process_text(doc):
     except Exception as e:
         print(e)
 
-    return (text_clean_space,
+    return (doc,
+            has_long_token,
+            text_clean_space,
             strip_punc_lower,
             len_clean_str,
             tokens,
