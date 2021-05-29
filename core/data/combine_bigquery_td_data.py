@@ -64,6 +64,8 @@ df['post_type'] = np.select(
     default='extant'
 )
 
+df = df[(df['author'] != 'BotForceOne') & (df['author'] != 'AutoModerator')]
+
 print(df.groupby('post_type')['post_type'].count())
 
 file_name = "combined_bigquery_processed"
