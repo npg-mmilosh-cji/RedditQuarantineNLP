@@ -3,16 +3,18 @@ import pandas as pd
 import gc
 
 from core.text_processing import clean
+# import clean
 
 # read all data
 posts_pkl_path = os.path.join('..', '..', "combined_bigquery_processed.pkl")
 posts_df = pd.read_pickle(posts_pkl_path)
 
 posts_df = posts_df[(posts_df["created_date"] > '2019-05-31') & (posts_df["created_date"] < '2019-08-01')]
+posts_df = posts_df[(posts_df['author'] != 'BotForceOne') & (posts_df['author'] != 'AutoModerator')]
 print(f"num rows in sample {len(posts_df)}")
 print(posts_df.created_date.min())
 print(posts_df.created_date.max())
-# num rows in sample 1760263
+# num rows in sample 1750563 (used to be 1760263 before getting rid of bots)
 # 2019-06-01
 # 2019-07-31
 
