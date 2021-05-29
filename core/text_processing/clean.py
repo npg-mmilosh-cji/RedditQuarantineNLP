@@ -47,7 +47,6 @@ def process_text(doc):
     clean_tokens = []
     lemmatized_tokens = []
     bigrams = []
-    trigrams = []
     try:
         for token in word_tokenize(strip_punc_lower):
             tokens.append(token)
@@ -58,7 +57,6 @@ def process_text(doc):
                 has_long_token = True
 
         bigrams = list(nltk.bigrams(lemmatized_tokens))
-        trigrams = list(nltk.trigrams(lemmatized_tokens))
 
     except Exception as e:
         print(e)
@@ -71,5 +69,15 @@ def process_text(doc):
             tokens,
             clean_tokens,
             lemmatized_tokens,
-            bigrams,
-            trigrams)
+            bigrams)
+
+
+def process_text_minimal(doc):
+    text_clean_space = remove_multiple_spaces(doc)
+    text_clean_space = ''.join(
+        filter(lambda x: x in printable, text_clean_space))
+    len_clean_str = len(text_clean_space)
+
+    return (doc,
+            text_clean_space,
+            len_clean_str)

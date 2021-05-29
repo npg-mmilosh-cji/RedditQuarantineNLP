@@ -40,8 +40,7 @@ processed_text_columns.columns = ['orig_selftext',
                                   'tokens',
                                   'tokens_clean',
                                   'tokens_lemma',
-                                  'bigrams',
-                                  'trigrams']
+                                  'bigrams']
 
 # attach new columns back to larger df
 extant_posts = pd.concat([extant_posts, processed_text_columns],
