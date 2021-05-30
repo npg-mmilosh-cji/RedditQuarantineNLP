@@ -9,7 +9,7 @@ from core.text_processing import clean
 posts_pkl_path = os.path.join('..', '..', "combined_bigquery_processed.pkl")
 posts_df = pd.read_pickle(posts_pkl_path)
 
-posts_df = posts_df[(posts_df["created_date"] > '2019-05-31') & (posts_df["created_date"] < '2019-08-01')]
+# posts_df = posts_df[(posts_df["created_date"] > '2019-05-31') & (posts_df["created_date"] < '2019-08-01')]
 posts_df = posts_df[(posts_df['author'] != 'BotForceOne') & (posts_df['author'] != 'AutoModerator')]
 print(f"num rows in sample {len(posts_df)}")
 print(posts_df.created_date.min())
@@ -49,7 +49,7 @@ extant_posts = pd.concat([extant_posts, processed_text_columns],
                          axis='columns')
 
 # pickle new cols only
-processed_text_columns.to_pickle("../../sampled_processed_extant_posts_june_july.pkl")
+processed_text_columns.to_pickle("../../processed_extant_posts_full.pkl")
 
 # pickle all extant data (new columns and orig)
 # extant_posts.to_pickle("../../sampled_full_extant_posts_1perc.pkl")
