@@ -1,5 +1,7 @@
+import os
 import json
 import csv
+import gensim
 
 
 def read_json_to_dict(file_path):
@@ -53,3 +55,17 @@ def write_list_to_csv(lines, file_name):
     with open(file_name, 'w') as writeFile:
         writer = csv.writer(writeFile)
         writer.writerows(lines)
+
+
+def load_lda_models(path_to_model_directory):
+    """
+    Read saved lda models from a directory
+    Returns a dict with key number of topics, value trained model
+    """
+    trained_models = dict()
+    for num_topics in range(5, 30, 2):
+        model_path = os.path.join(path_to_model_directory ,('lda_models/lda_' + str(num_topics) + '_topics'))
+        print("Loading LDA(k=%d) from %s" % (num_topics, model_path))
+        trained_models[num_topics] = gensim.models.LdaMulticore.load(model_path)
+    return trained_models
+
