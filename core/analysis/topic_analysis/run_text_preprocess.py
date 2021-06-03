@@ -1,9 +1,11 @@
 import os
 import pandas as pd
 import gc
-
 from core.text_processing import clean
-# import clean
+
+"""
+Code to run standard NLP pre-processing
+"""
 
 # read all data
 posts_pkl_path = os.path.join('..', '..', "combined_bigquery_processed.pkl")

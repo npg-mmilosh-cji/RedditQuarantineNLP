@@ -4,10 +4,12 @@ Investigating the effects of Reddit quarantines on user sentiment and recruitmen
 
 The goal of this project is to use NLP techniques to understand the impact of a Reddit “quarantine”. The project will focus on the language used within the quarantined subreddits before and after quarantine took place.
 
+### Data
 Our dataset was obtained using Google BigQuery. The dataset contains 10,015,586 records, where each record is a comment (which we refer to as “posts”) posted in r/The_Donald (TD) in 2019. 
 
 (see: https://www.reddit.com/r/bigquery/comments/3cej2b/17_billion_reddit_comments_loaded_on_bigquery/)
 
+### Analysis
 We applied machine learning models to the text in order to produce meaningful summaries about the content of posts in TD and to determine whether there are any observable changes in the data around the time of quarantine. This is primarily an unsupervised learning problem since we do not have labels that are helpful in answering this question. 
 
 
