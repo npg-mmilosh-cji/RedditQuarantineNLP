@@ -1,7 +1,9 @@
 import pandas as pd
 import gensim
 import gensim.corpora as corpora
-
+"""
+Code for training LDA models for k=5 to 30, by 2
+"""
 
 pkl_path = 'processed_extant_posts_full.pkl'
 posts_df = pd.read_pickle(pkl_path)

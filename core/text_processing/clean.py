@@ -4,6 +4,10 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 
+"""
+Functions to pre-process raw text input
+"""
+
 nltk.download('wordnet')
 nltk.download('punkt')
 nltk.download('stopwords')
