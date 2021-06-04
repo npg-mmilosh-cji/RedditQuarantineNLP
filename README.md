@@ -14,6 +14,7 @@ We applied machine learning models to the text in order to produce meaningful su
 
 We use pretrained **sentiment analysis** models to examine the polarity of posts (positive, negative, or neutral). We then use **topic modeling** to examine themes within the posts. The output of the sentiment and topic analysis become input to our clustering approach, which attempts to find similar groups of posts along a variety of interesting features.
 
+![LDA](readme.png)
 
 **Language Requirements:**
 Python 3.7
@@ -25,3 +26,12 @@ To create our environment:
 1. create a venv (must have venv installed): `PYTHON -m venv env`
 2. activate env: `source env/bin/activate`
 3. install packages from requirements.txt: `pip install -r requirements.txt`
+
+**Processed Data**
+
+Data for our project can be found on our university [box](https://uchicago.app.box.com/folder/137045365771?s=f2m75jh34n3ot3462wv4bqz13nqkyhfx) account
+
+**Analysis Notebooks**
+
+To run our various models, see: `core/analysis`
+
