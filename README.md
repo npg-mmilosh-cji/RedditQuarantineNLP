@@ -27,7 +27,7 @@ To create our environment:
 2. activate env: `source env/bin/activate`
 3. install packages from requirements.txt: `pip install -r requirements.txt`
 
-**Processed Data**
+**Processed Data** 
 
 Data for our project can be found on our university [box](https://uchicago.app.box.com/folder/137045365771?s=f2m75jh34n3ot3462wv4bqz13nqkyhfx) account
 
